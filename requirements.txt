@@ -1,0 +1,18 @@
+# LMA - Library Management Application
+# Python Dependencies
+
+# PDF Processing
+PyMuPDF>=1.23.0          # Fast PDF rendering and manipulation
+PyPDF2>=3.0.0            # PDF text extraction
+
+# Image Processing
+Pillow>=10.0.0           # Image handling for thumbnails
+
+# Search and Matching
+fuzzywuzzy>=0.18.0       # Fuzzy string matching
+python-Levenshtein>=0.21.0  # Fast string comparison
+
+# Optional: Enhanced features
+# Uncomment if needed:
+# anthropic>=0.3.0       # Claude API integration for AI features
+# requests>=2.31.0       # HTTP requests for cloud features
