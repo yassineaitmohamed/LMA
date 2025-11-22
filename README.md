@@ -215,14 +215,7 @@ self.bg_light = "#f5f5dc"
 self.accent_blue_light = "#3498db"
 ```
 
-## 📈 Performance Benchmarks
 
-Tested on MacBook Pro 2023 (M2 Pro, 16GB RAM):
-
-- **Page Load Time**: < 10ms (cached), ~50ms (uncached)
-- **Search Speed**: ~100ms for 100-page document
-- **Memory Usage**: ~200MB for typical session
-- **Cache Hit Rate**: 90%+ for sequential reading
 
 ## 🐛 Troubleshooting
 
@@ -275,10 +268,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 Author
 
-**Yassine**
+**Yassine Ait Mohamed**
 - PhD Student in Mathematics
 - University of Sherbrooke
-- Research: Differential Geometry, Algebraic Structures
 
 ## 🙏 Acknowledgments
 
@@ -286,13 +278,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Tkinter for cross-platform GUI
 - The academic community for inspiration
 
-## 📧 Contact & Support
-
-- **Issues**: [GitHub Issues](https://github.com/yourusername/LMA/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/LMA/discussions)
-
----
 
 **Made with ❤️ for researchers and academics**
 
-*Optimized for MacBook Pro 2023 and Apple Silicon*
