@@ -29,12 +29,15 @@ LMA is a powerful desktop application designed for researchers, PhD students, an
 *Professional dark theme with article list, search bar, and smart filters. Shows 251 articles indexed.*
 
 ### 🌟 Main Interface - Light Theme  
-<img src="image6.png" alt="LMA Main Interface - Light" width="800"/>
+<img src="image4.png" alt="LMA Main Interface - Light" width="800"/>
 
 *Clean light theme optimized for daytime reading - same powerful features*
 
+### 🌟 LecteurPDF 
+<img src="image3.png" alt="LecteurPDF" width="800"/>
+
 ### 🐍 Python Scripts
-<img src="image4.png" alt="Python Scripts" width="800"/>
+<img src="image6.png" alt="Python Scripts" width="800"/>
 
 *Core application files: interface_pro.py, biblio_improved.py, lecteurpdf_fast.py, lecteurpdf.py*
 
@@ -210,109 +213,9 @@ LMA needs this folder structure on your Desktop:
 │   ├── biblio_improved.py
 │   ├── lecteurpdf_fast.py
 │   └── lecteurpdf.py
-├── image1.png         # Screenshots
-├── image2.png
-├── image4.png
-├── image5.png
-└── image6.png
-```
 
-**Create the directories:**
 
-#### macOS / Linux
-```bash
-cd ~/Desktop/LMA
-mkdir -p articles data scripts
 
-# Option 1: Keep Python files in root (simpler)
-# Files can stay in the main LMA folder
-
-# Option 2: Organize in scripts folder
-mv *.py scripts/ 2>/dev/null || true
-# or copy: cp *.py scripts/
-```
-
-#### Windows
-```cmd
-cd %USERPROFILE%\Desktop\LMA
-mkdir articles
-mkdir data
-mkdir scripts
-
-rem Move or copy Python files
-move *.py scripts\
-```
-
----
-
-### Step 5: Add Your PDF Files
-
-Copy your research papers to the articles folder:
-
-```bash
-# Copy individual PDFs
-cp ~/Documents/research_paper.pdf ~/Desktop/LMA/articles/
-
-# Copy entire folder
-cp -r ~/Documents/Research/*.pdf ~/Desktop/LMA/articles/
-
-# Or simply drag and drop PDFs into the articles folder
-```
-
-**Tip**: You can organize PDFs in subfolders:
-```
-articles/
-├── Mathematics/
-│   └── Lie_Algebras/
-├── Physics/
-└── Computer_Science/
-```
-
-LMA will scan all subfolders automatically!
-
----
-
-### Step 6: Launch LMA
-
-#### If Python files are in root folder (default):
-```bash
-cd ~/Desktop/LMA
-python3 interface_pro.py
-```
-
-#### If Python files are in scripts folder:
-```bash
-cd ~/Desktop/LMA/scripts
-python3 interface_pro.py
-```
-
-#### Windows:
-```cmd
-cd %USERPROFILE%\Desktop\LMA
-python interface_pro.py
-```
-
-**First launch will:**
-1. Create the database (`data/articles.db`)
-2. Open the main LMA window (as shown in screenshots)
-3. Show an empty library → click 🔄 **Refresh** to scan PDFs
-
----
-
-### Step 7: Index Your PDF Library
-
-1. Click the **🔄 Refresh** button in the toolbar
-2. LMA will scan all PDFs in the `articles/` folder
-3. Wait for indexing to complete (progress shown in status bar)
-4. Your articles will appear in the list with title, author, and year!
-
-**What gets indexed:**
-- Filename and full path
-- Title, authors, year (extracted from filename)
-- Keywords and content (extracted from PDF metadata)
-- File hash (for duplicate detection)
-
----
 
 ## 🚀 Quick Start Guide
 
@@ -767,69 +670,8 @@ python3 biblio_improved.py --stats
 
 ---
 
-## 🤝 Contributing
 
-Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-### Quick Contribution Guide
-
-1. **Fork** the repository
-2. **Create** a feature branch:
-   ```bash
-   git checkout -b feature/amazing-feature
-   ```
-3. **Make** your changes
-4. **Test** thoroughly
-5. **Commit** with clear message:
-   ```bash
-   git commit -m "Add feature: description"
-   ```
-6. **Push** and create Pull Request:
-   ```bash
-   git push origin feature/amazing-feature
-   ```
-
----
-
-## 📝 Version History
-
-See [CHANGELOG.md](CHANGELOG.md) for detailed version history.
-
-### Current Version: 1.0.0 (Stable)
-- ✅ Core library management system
-- ✅ Ultra-fast PDF reader with dual modes
-- ✅ Advanced search and fuzzy matching
-- ✅ Annotations system (highlights, notes, bookmarks)
-- ✅ Dark/Light professional themes
-- ✅ Cross-platform support (macOS/Linux/Windows)
-- ✅ Performance optimization with intelligent cache
-- ✅ Real-time statistics and monitoring
-
-### Upcoming: 1.1.0 (Planned)
-- 🔜 Enhanced Windows support (native features)
-- 🔜 Cloud sync (Google Drive, Dropbox)
-- 🔜 BibTeX export and import
-- 🔜 Enhanced AI features (GPT-4 integration)
-- 🔜 Multi-language UI (French, Spanish)
-- 🔜 PDF OCR for scanned documents
-- 🔜 Citation network visualization
-
----
-
-## 🆘 Getting Help
-
-### Documentation
-- 📖 [Installation Guide](INSTALLATION.md) - Detailed setup instructions
-- 🚀 [Quick Start](QUICKSTART.md) - Get started in 5 minutes
-- ❓ [FAQ](FAQ.md) - Frequently asked questions
-- 🤝 [Contributing](CONTRIBUTING.md) - How to contribute
-
-### Community & Support
-- 💬 [GitHub Discussions](https://github.com/yassineaitmohamed/LMA/discussions) - Ask questions
-- 🐛 [Issue Tracker](https://github.com/yassineaitmohamed/LMA/issues) - Report bugs
-- 📧 [Contact Author](https://github.com/yassineaitmohamed) - Direct contact
-
----
 
 ## 📄 License
 
@@ -842,85 +684,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👨‍💻 Author
 
 **Yassine Ait Mohamed**
-- 🎓 PhD Student in Mathematics
-- 🏛️ University of Sherbrooke
-- 🔬 Research: Lie algebroids, Poisson manifolds, deformation theory
-- 🌐 GitHub: [@yassineaitmohamed](https://github.com/yassineaitmohamed)
-- 📧 Contact: [via GitHub](https://github.com/yassineaitmohamed)
 
----
 
-## 🙏 Acknowledgments
 
-### Technology Stack
-- 🐍 **Python 3.8+** - Programming language
-- 🖼️ **Tkinter** - Cross-platform GUI framework
-- 📄 **PyMuPDF (fitz)** - Fast PDF rendering engine
-- 📚 **PyPDF2** - PDF metadata and text extraction
-- 🔍 **fuzzywuzzy** - Fuzzy string matching for smart search
-- 🖼️ **Pillow (PIL)** - Image processing for thumbnails
-- 🗄️ **SQLite3** - Lightweight embedded database
 
-### Inspiration & Thanks
-- 🌍 Academic researchers worldwide who need better tools
-- ❤️ The open-source community for incredible libraries
-- 🎓 University of Sherbrooke for academic environment
-- 👥 PhD students who provided feedback and testing
-- ⭐ Everyone who starred and contributed to this project
-
-### Special Recognition
-- Researchers dealing with hundreds of PDFs daily
-- The Python community for excellent documentation
-- Mathematics community for inspiring this tool
-- All contributors who helped improve LMA
-
----
-
-## 🌟 Support the Project
-
-If you find LMA useful, please consider:
-- ⭐ **Star the repository** on GitHub
-- 🍴 **Fork and contribute** improvements
-- 📢 **Share with colleagues** and friends
-- 💬 **Provide feedback** and suggestions
-- 🐛 **Report bugs** to help us improve
-- 📝 **Write about LMA** in your blog/social media
-
-### Citing LMA
-
-If you use LMA in your research or work, please cite:
-
-```bibtex
-@software{lma2024,
-  title={LMA: Literature Management Assistant},
-  author={Ait Mohamed, Yassine},
-  year={2024},
-  url={https://github.com/yassineaitmohamed/LMA},
-  version={1.0.0},
-  note={Professional PDF library manager for academic research}
-}
-```
-
----
 
 **Made with ❤️ for researchers and academics**
 
 *Empowering research through better literature management*
 
----
-
-## 📊 Project Statistics
-
-![GitHub Stars](https://img.shields.io/github/stars/yassineaitmohamed/LMA?style=social)
-![GitHub Forks](https://img.shields.io/github/forks/yassineaitmohamed/LMA?style=social)
-![GitHub Issues](https://img.shields.io/github/issues/yassineaitmohamed/LMA)
-![GitHub Pull Requests](https://img.shields.io/github/issues-pr/yassineaitmohamed/LMA)
-![GitHub Last Commit](https://img.shields.io/github/last-commit/yassineaitmohamed/LMA)
-![GitHub Code Size](https://img.shields.io/github/languages/code-size/yassineaitmohamed/LMA)
-![License](https://img.shields.io/badge/license-MIT-green)
-
----
-
-**🚀 Start organizing your research library today!**
-
-[⬇️ Download LMA](https://github.com/yassineaitmohamed/LMA/archive/refs/heads/main.zip) | [📖 Documentation](INSTALLATION.md) | [❓ Get Help](https://github.com/yassineaitmohamed/LMA/discussions)
