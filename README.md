@@ -1,4 +1,6 @@
-# LMA
+# 🇲🇦 LMA - Library Management App
+
+> Gestionnaire de bibliothèque d'articles PDF avec lecteur intégré et annotations intelligentes
 
 ## 📖 Description
 
@@ -37,210 +39,105 @@
 - **Linux** (Ubuntu, Debian, Fedora)
 - **Windows** 10/11 (avec Python installé)
 
-
+### Logiciels
+- **Python 3.8+** (inclus sur macOS)
+- **Terminal** (Applications > Utilitaires > Terminal)
 
 ---
 
-## 🚀 Installation depuis le Terminal
+## 🚀 Installation Complète via Terminal
 
-### Étape 1 : Télécharger les Fichiers
+### Étape 1 : Créer la Structure
 
-Créez un dossier `LMA` sur votre Bureau et placez-y les fichiers suivants :
-
-```
-Desktop/
-└── LMA/
-    ├── scripts/
-    │   ├── interface_pro.py          # Interface principale
-    │   ├── biblio_improved.py        # Gestion base de données
-    │   └── lecteur_pdf_moderne.py    # Lecteur PDF
-    ├── articles/                     # Vos PDFs ici
-    └── data/                         # Base de données (créé auto)
-```
-
-### Étape 2 : Installer les Dépendances
-
-Ouvrez le **Terminal** et exécutez :
+Ouvrez le **Terminal** et copiez-collez ces commandes :
 
 ```bash
-# Installer les bibliothèques Python nécessaires
+# Créer le dossier LMA sur le Bureau
+mkdir -p ~/Desktop/LMA/scripts
+mkdir -p ~/Desktop/LMA/articles
+mkdir -p ~/Desktop/LMA/data
+
+# Aller dans le dossier
+cd ~/Desktop/LMA
+```
+
+### Étape 2 : Télécharger les Fichiers
+
+Téléchargez les 3 fichiers Python et placez-les dans `~/Desktop/LMA/scripts/` :
+- `interface_pro.py`
+- `biblio_improved.py`
+- `lecteur_pdf_moderne.py`
+
+**Via terminal (si vous avez git) :**
+```bash
+# Cloner le dépôt (remplacez par votre URL)
+git clone https://github.com/votre-username/LMA.git ~/Desktop/LMA
+cd ~/Desktop/LMA
+```
+
+### Étape 3 : Installer les Dépendances
+
+```bash
+# Installer les bibliothèques Python
 pip3 install PyMuPDF pillow fuzzywuzzy python-levenshtein
 ```
 
-**Si vous avez une erreur sur macOS :**
+**Si erreur "externally-managed-environment" sur macOS :**
 ```bash
 pip3 install --break-system-packages PyMuPDF pillow fuzzywuzzy python-levenshtein
 ```
 
-### Étape 3 : Vérifier l'Installation
+### Étape 4 : Vérifier l'Installation
 
 ```bash
-# Vérifier que tout est installé
-python3 -c "import fitz; import PIL; import fuzzywuzzy; print('✅ Tout est OK !')"
+# Vérifier que tout fonctionne
+python3 -c "import fitz; import PIL; import fuzzywuzzy; print('✅ Installation réussie !')"
 ```
 
-Si vous voyez "✅ Tout est OK !", vous pouvez continuer !
+Si vous voyez **"✅ Installation réussie !"**, continuez !
 
-### Étape 4 : Lancer l'Application
+### Étape 5 : Créer l'Alias LMA
+
+Pour lancer l'application en tapant simplement `lma` dans le terminal :
 
 ```bash
-# Aller dans le dossier LMA
-cd ~/Desktop/LMA/scripts
+# Ajouter l'alias à votre configuration shell
+echo "alias lma='cd ~/Desktop/LMA/scripts && python3 interface_pro.py'" >> ~/.zshrc
 
-# Lancer l'interface
+# Recharger la configuration
+source ~/.zshrc
+```
+
+**Pour bash (Linux ou vieux macOS) :**
+```bash
+echo "alias lma='cd ~/Desktop/LMA/scripts && python3 interface_pro.py'" >> ~/.bashrc
+source ~/.bashrc
+```
+
+---
+
+## 🎯 Lancer l'Application
+
+### Méthode 1 : Via l'Alias (Recommandé)
+
+Ouvrez le **Terminal** et tapez simplement :
+
+```bash
+lma
+```
+
+C'est tout ! L'application se lance. 🚀
+
+### Méthode 2 : Via Commande Complète
+
+```bash
+cd ~/Desktop/LMA/scripts
 python3 interface_pro.py
 ```
 
----
+### Méthode 3 : Double-Clic (Optionnel)
 
-## 📁 Première Utilisation
-
-### 1. Ajouter vos PDFs
-
-Copiez vos articles PDF dans le dossier `articles/` :
-
-```bash
-# Exemple : copier des PDFs
-cp /chemin/vers/vos/articles/*.pdf ~/Desktop/LMA/articles/
-```
-
-**Convention de nommage recommandée :**
-- `Auteur_2024_Titre.pdf`
-- Exemple : `Dupont_2024_Machine_Learning.pdf`
-
-### 2. Indexer les PDFs
-
-1. Ouvrez l'application
-2. Cliquez sur le bouton **📥** (Index)
-3. Attendez la fin de l'indexation
-4. Vos articles apparaissent dans le tableau !
-
-### 3. Utiliser l'Application
-
-#### Rechercher un Article
-- Tapez dans la barre de recherche 🔍
-- La recherche filtre instantanément les résultats
-
-#### Ouvrir un Article
-- **Double-clic** sur l'article dans le tableau
-- OU clic droit → "📖 Open PDF"
-
-#### Marquer un Article
-- Sélectionnez l'article
-- Cliquez sur **📌 TO READ** (à lire)
-- OU **✅ DONE** (déjà lu)
-
-#### Filtrer les Articles
-- **📚 ALL** : voir tous les articles
-- **📖 TO READ** : voir seulement ceux à lire
-
----
-
-## 🎨 Utiliser le Lecteur PDF
-
-### Navigation
-
-#### Au Clavier
-- `←` `→` : Page précédente/suivante
-- `Space` : Page suivante
-- `Home` / `End` : Première/dernière page
-
-#### Au Trackpad (MacBook)
-- **Scroll 2 doigts** : Navigation fluide
-- En haut/bas de page : Change automatiquement de page
-
-### Zoom
-
-- `⌘ +` / `⌘ -` : Zoomer/Dézoomer
-- `⌘ 0` : Ajuster à la fenêtre
-- **Double-clic** : Ajuster automatiquement
-
-### Surlignage
-
-1. Appuyer sur `⌘ P` pour activer le stylo
-2. Choisir une couleur :
-   - `⌘ Y` : Jaune 🟨
-   - `⌘ R` : Rouge 🟥
-   - `⌘ G` : Vert 🟩
-   - `⌘ B` : Bleu 🟦
-3. **Cliquer-glisser** sur le texte à surligner
-4. Les annotations sont **sauvegardées automatiquement**
-
-### Recherche dans le PDF
-
-- `⌘ F` : Ouvrir la recherche
-- Taper le mot à chercher
-- Utiliser les flèches ◀ ▶ pour naviguer
-
-### Miniatures
-
-- `⌘ M` : Afficher les miniatures
-- Cliquer sur une page pour y accéder
-
-### Thème Clair/Sombre
-
-- `⌘ T` : Changer de thème
-
----
-
-## 🔧 Dépannage
-
-### L'application ne démarre pas
-
-**Problème** : `ModuleNotFoundError: No module named 'fitz'`
-
-**Solution** :
-```bash
-pip3 install PyMuPDF
-```
-
-### Les PDFs ne s'ouvrent pas
-
-**Problème** : "lecteur_pdf_moderne.py introuvable"
-
-**Solution** :
-```bash
-# Vérifier que le fichier existe
-ls ~/Desktop/LMA/scripts/lecteur_pdf_moderne.py
-
-# Si absent, télécharger le fichier manquant
-```
-
-### Erreur "externally-managed-environment"
-
-**Sur macOS récent** :
-```bash
-pip3 install --break-system-packages PyMuPDF pillow fuzzywuzzy python-levenshtein
-```
-
-**OU avec --user** :
-```bash
-pip3 install --user PyMuPDF pillow fuzzywuzzy python-levenshtein
-```
-
-### Python introuvable
-
-**Vérifier Python** :
-```bash
-python3 --version
-```
-
-Si absent, installer depuis [python.org](https://www.python.org/downloads/)
-
-### Permission refusée
-
-```bash
-# Donner les permissions d'exécution
-chmod +x ~/Desktop/LMA/scripts/*.py
-```
-
----
-
-## 💡 Astuces Pro
-
-### Créer un Raccourci
-
-Pour lancer l'application d'un double-clic :
+Créer un raccourci sur le Bureau :
 
 ```bash
 # Créer un fichier .command
@@ -254,35 +151,245 @@ EOF
 chmod +x ~/Desktop/LMA.command
 ```
 
-Maintenant, **double-cliquez** sur `LMA.command` pour lancer !
+Maintenant vous pouvez **double-cliquer** sur `LMA.command` !
 
-### Créer un Alias Terminal
+---
+
+## 📁 Première Utilisation
+
+### 1. Ajouter vos PDFs
 
 ```bash
-# Ajouter à votre .zshrc (macOS) ou .bashrc (Linux)
-echo "alias lma='cd ~/Desktop/LMA/scripts && python3 interface_pro.py'" >> ~/.zshrc
+# Copier vos PDFs dans le dossier articles
+cp /chemin/vers/vos/pdfs/*.pdf ~/Desktop/LMA/articles/
 
-# Recharger
-source ~/.zshrc
+# Exemple avec un fichier spécifique
+cp ~/Downloads/Article_2024.pdf ~/Desktop/LMA/articles/
+```
 
-# Maintenant tapez juste :
+**Convention de nommage recommandée :**
+- Format : `Auteur_Année_Titre.pdf`
+- Exemple : `Dupont_2024_Machine_Learning.pdf`
+
+### 2. Lancer et Indexer
+
+```bash
+# Lancer l'application
 lma
 ```
 
-### Sauvegarde de la Bibliothèque
+Puis dans l'interface :
+1. Cliquez sur **📥** (Index)
+2. Attendez la fin de l'indexation
+3. Vos articles apparaissent !
 
-Vos données sont dans :
-- `~/Desktop/LMA/data/articles.db` (base de données)
-- `~/Desktop/LMA/articles/*.annotations.json` (surlignages)
+### 3. Utiliser l'Application
 
-**Sauvegarde complète** :
+- **Recherche** : Tapez dans la barre 🔍
+- **Ouvrir** : Double-clic sur un article
+- **Filtrer** : 📚 ALL ou 📖 TO READ
+- **Marquer** : 📌 TO READ ou ✅ DONE
+
+---
+
+## 🎨 Utiliser le Lecteur PDF
+
+### Navigation Clavier
+```
+←  →         Page précédente/suivante
+Space        Page suivante
+Home / End   Première/dernière page
+```
+
+### Zoom
+```
+⌘ +  / ⌘ -   Zoomer/Dézoomer
+⌘ 0          Ajuster à la fenêtre
+Double-clic  Ajuster automatiquement
+```
+
+### Surlignage
 ```bash
-# Créer une archive
+# Activer le stylo
+⌘ P
+
+# Choisir une couleur
+⌘ Y    # Jaune 🟨
+⌘ R    # Rouge 🟥
+⌘ G    # Vert 🟩
+⌘ B    # Bleu 🟦
+
+# Puis cliquer-glisser sur le texte
+```
+
+### Autres Fonctions
+```
+⌘ F    Rechercher dans le PDF
+⌘ M    Afficher miniatures
+⌘ T    Changer thème
+⌘ W    Fermer
+```
+
+---
+
+## 🔧 Commandes Utiles
+
+### Vérifier l'Installation
+
+```bash
+# Version Python
+python3 --version
+
+# Modules installés
+pip3 list | grep -i "pymupdf\|pillow\|fuzzywuzzy"
+
+# Tester l'import
+python3 -c "import fitz; print('PyMuPDF OK')"
+```
+
+### Gérer les PDFs
+
+```bash
+# Voir combien de PDFs vous avez
+ls ~/Desktop/LMA/articles/*.pdf | wc -l
+
+# Chercher un PDF
+ls ~/Desktop/LMA/articles/ | grep "Machine"
+
+# Copier plusieurs PDFs
+cp ~/Downloads/*.pdf ~/Desktop/LMA/articles/
+```
+
+### Maintenance
+
+```bash
+# Nettoyer la base de données
+rm ~/Desktop/LMA/data/articles.db
+# Puis relancer et cliquer sur 📥 Index
+
+# Voir la taille de la base
+du -h ~/Desktop/LMA/data/articles.db
+
+# Sauvegarder tout
 cd ~/Desktop
 tar -czf LMA_backup_$(date +%Y%m%d).tar.gz LMA/
+```
 
-# Restaurer
-tar -xzf LMA_backup_YYYYMMDD.tar.gz
+### Mise à Jour
+
+```bash
+# Mettre à jour les dépendances
+pip3 install --upgrade PyMuPDF pillow fuzzywuzzy python-levenshtein
+
+# Re-télécharger les fichiers
+cd ~/Desktop/LMA
+# Puis remplacer les fichiers .py
+```
+
+---
+
+## 🐛 Dépannage via Terminal
+
+### L'alias 'lma' ne fonctionne pas
+
+```bash
+# Vérifier que l'alias existe
+grep "lma" ~/.zshrc
+
+# Si absent, le recréer
+echo "alias lma='cd ~/Desktop/LMA/scripts && python3 interface_pro.py'" >> ~/.zshrc
+source ~/.zshrc
+
+# Tester
+lma
+```
+
+### Module 'fitz' introuvable
+
+```bash
+# Réinstaller PyMuPDF
+pip3 install --force-reinstall PyMuPDF
+
+# Vérifier
+python3 -c "import fitz; print('OK')"
+```
+
+### Permission refusée
+
+```bash
+# Donner les permissions
+chmod +x ~/Desktop/LMA/scripts/*.py
+
+# Vérifier
+ls -la ~/Desktop/LMA/scripts/
+```
+
+### Lecteur PDF ne s'ouvre pas
+
+```bash
+# Vérifier que le fichier existe
+ls -la ~/Desktop/LMA/scripts/lecteur_pdf_moderne.py
+
+# Tester le lecteur seul
+cd ~/Desktop/LMA/scripts
+python3 lecteur_pdf_moderne.py
+```
+
+### Erreur au lancement
+
+```bash
+# Voir les erreurs détaillées
+cd ~/Desktop/LMA/scripts
+python3 interface_pro.py
+
+# Les erreurs s'affichent dans le terminal
+```
+
+---
+
+## 💡 Astuces Terminal
+
+### Ouvrir le Dossier Articles
+
+```bash
+# Ouvrir dans Finder (macOS)
+open ~/Desktop/LMA/articles/
+
+# Aller dans le dossier
+cd ~/Desktop/LMA/articles/
+```
+
+### Compter les Articles
+
+```bash
+# Total de PDFs
+find ~/Desktop/LMA/articles/ -name "*.pdf" | wc -l
+
+# Par année (si nommage Auteur_Année_Titre.pdf)
+ls ~/Desktop/LMA/articles/ | grep "2024" | wc -l
+```
+
+### Rechercher dans les Noms de Fichiers
+
+```bash
+# Chercher "Machine Learning"
+find ~/Desktop/LMA/articles/ -name "*Machine*Learning*.pdf"
+
+# Lister tous les PDFs d'un auteur
+ls ~/Desktop/LMA/articles/ | grep "Dupont"
+```
+
+### Statistiques
+
+```bash
+# Taille totale des PDFs
+du -sh ~/Desktop/LMA/articles/
+
+# Nombre d'annotations
+find ~/Desktop/LMA/articles/ -name "*.annotations.json" | wc -l
+
+# Taille de la base de données
+du -h ~/Desktop/LMA/data/articles.db
 ```
 
 ---
@@ -290,87 +397,164 @@ tar -xzf LMA_backup_YYYYMMDD.tar.gz
 ## 📊 Structure des Fichiers
 
 ```
-LMA/
+~/Desktop/LMA/
 ├── scripts/
-│   ├── interface_pro.py          # Interface principale (🇲🇦)
+│   ├── interface_pro.py          # Interface principale 🇲🇦
 │   ├── biblio_improved.py        # Gestion BDD + cache
 │   └── lecteur_pdf_moderne.py    # Lecteur PDF optimisé
 │
 ├── articles/                     # 📚 VOS PDFs ICI
-│   ├── Yassine ait mohamed_2025_LMA.pdf
-│   
+│   ├── Auteur_2024_Titre.pdf
+│   └── Auteur_2024_Titre.annotations.json
+│
 ├── data/                         # Créé automatiquement
-│   └── articles.db              # Base de données SQLite
+│   └── articles.db              # Base SQLite
 │
 └── LMA.command                   # Raccourci (optionnel)
+```
 
 ---
 
-## ⌨️ Raccourcis Clavier
+## ⌨️ Tous les Raccourcis
 
-### Interface Principale
+### Terminal
+
+```bash
+lma              # Lancer l'application
+cd ~/Desktop/LMA # Aller dans le dossier
+```
+
+### Interface LMA
+
 | Raccourci | Action |
 |-----------|--------|
 | `⌘ F` | Rechercher |
-| `↑` `↓` | Naviguer dans la liste |
-| `Enter` | Ouvrir l'article sélectionné |
+| `↑` `↓` | Naviguer |
+| `Enter` | Ouvrir |
 | `⌘ Q` | Quitter |
 
 ### Lecteur PDF
+
 | Raccourci | Action |
 |-----------|--------|
-| `←` `→` | Page précédente/suivante |
+| `←` `→` | Pages |
 | `Space` | Page suivante |
-| `⌘ +` `-` | Zoom in/out |
-| `⌘ 0` | Ajuster |
+| `⌘ +` `-` | Zoom |
 | `⌘ F` | Rechercher |
-| `⌘ P` | Mode stylo |
+| `⌘ P` | Stylo |
 | `⌘ Y` `R` `G` `B` | Couleurs |
 | `⌘ M` | Miniatures |
 | `⌘ T` | Thème |
-| `⌘ W` | Fermer |
 
 ---
 
 ## 🆘 Support
 
-### Problèmes Courants
+### Problèmes Fréquents
 
-**Q : L'indexation est lente**
-- Normal pour le premier scan
-- Le cache accélère les suivantes
+**"command not found: lma"**
+```bash
+# Recréer l'alias
+echo "alias lma='cd ~/Desktop/LMA/scripts && python3 interface_pro.py'" >> ~/.zshrc
+source ~/.zshrc
+```
 
-**Q : Les surlignages disparaissent**
-- Vérifiez les fichiers `.annotations.json`
-- Vérifiez les permissions du dossier
+**"No module named 'fitz'"**
+```bash
+pip3 install --break-system-packages PyMuPDF
+```
 
-**Q : Le scroll ne fonctionne pas**
-- Sur MacBook : utilisez 2 doigts
-- Au clavier : utilisez les flèches
+**"Permission denied"**
+```bash
+chmod +x ~/Desktop/LMA/scripts/*.py
+```
 
-**Q : Erreur "self.or invalid syntax"**
-- Version obsolète du fichier
-- Re-téléchargez la dernière version
+### Réinstallation Complète
 
-### Obtenir de l'Aide
+```bash
+# Supprimer tout
+rm -rf ~/Desktop/LMA
 
-1. Vérifiez ce guide
-2. Testez en mode standalone : `python3 lecteur_pdf_moderne.py`
-3. Vérifiez les logs d'erreur dans le terminal
+# Recommencer l'installation
+mkdir -p ~/Desktop/LMA/scripts
+mkdir -p ~/Desktop/LMA/articles
+mkdir -p ~/Desktop/LMA/data
+# ... puis suivre les étapes d'installation
+```
 
 ---
 
-## 📝 Notes Importantes
+## 📝 Commandes Récapitulatives
 
-### Compatibilité PDF
-- ✅ PDFs texte (recherchable)
-- ✅ PDFs scannés (affichage seulement)
-- ⚠️ PDFs protégés (lecture seule)
+### Installation
 
+```bash
+# 1. Créer structure
+mkdir -p ~/Desktop/LMA/{scripts,articles,data}
 
+# 2. Installer dépendances
+pip3 install --break-system-packages PyMuPDF pillow fuzzywuzzy python-levenshtein
 
+# 3. Créer alias
+echo "alias lma='cd ~/Desktop/LMA/scripts && python3 interface_pro.py'" >> ~/.zshrc
+source ~/.zshrc
 
+# 4. Lancer
+lma
+```
 
+### Utilisation Quotidienne
 
+```bash
+# Ouvrir terminal et taper :
+lma
 
-**🇲🇦 Profitez de LMA pour organiser vos articles scientifiques ! 📚**
+# C'est tout ! 🎉
+```
+
+---
+
+## 🎓 Workflow Complet
+
+```bash
+# 1. Télécharger un PDF
+# (Via navigateur dans ~/Downloads/)
+
+# 2. Le copier dans LMA
+cp ~/Downloads/Article_2024.pdf ~/Desktop/LMA/articles/
+
+# 3. Lancer LMA
+lma
+
+# 4. Cliquer sur 📥 Index
+
+# 5. Double-cliquer sur l'article pour l'ouvrir
+
+# 6. Surligner avec ⌘ P puis ⌘ Y
+
+# 7. Fermer avec ⌘ W
+```
+
+---
+
+## 🌟 Pour Toujours Avoir LMA Disponible
+
+Ajoutez ceci à votre `~/.zshrc` ou `~/.bashrc` :
+
+```bash
+# LMA - Library Management App 🇲🇦
+alias lma='cd ~/Desktop/LMA/scripts && python3 interface_pro.py'
+alias lma-articles='cd ~/Desktop/LMA/articles && ls -lh'
+alias lma-backup='cd ~/Desktop && tar -czf LMA_backup_$(date +%Y%m%d).tar.gz LMA/'
+```
+
+Maintenant vous avez :
+- `lma` → Lance l'application
+- `lma-articles` → Voir vos PDFs
+- `lma-backup` → Sauvegarder tout
+
+---
+
+**🇲🇦 Profitez de LMA ! Tapez simplement `lma` dans le terminal pour commencer ! 📚**
+
+*Dernière mise à jour : Janvier 2024*
