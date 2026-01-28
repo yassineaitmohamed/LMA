@@ -37,10 +37,7 @@
 - **Linux** (Ubuntu, Debian, Fedora)
 - **Windows** 10/11 (avec Python installé)
 
-### Logiciels
-- **Python 3.8+** (inclus sur macOS)
-- **Tkinter** (inclus avec Python)
-- **16 Go RAM minimum** recommandé
+
 
 ---
 
@@ -372,58 +369,7 @@ LMA/
 
 
 
-### Vie Privée
-- **Tout est local** : aucune donnée envoyée en ligne
-- Base de données SQLite sur votre Mac
-- Annotations sauvegardées localement
 
----
-
-## 🎓 Cas d'Usage
-
-### Pour Étudiants
-- Organiser les articles de recherche
-- Surligner les passages importants
-- Préparer les examens efficacement
-
-### Pour Chercheurs
-- Gérer une bibliographie complète
-- Annoter des centaines d'articles
-- Rechercher rapidement dans toute la collection
-
-### Pour Professeurs
-- Organiser les lectures du cours
-- Marquer les articles à recommander
-- Préparer les références bibliographiques
-
----
-
-## 🚀 Fonctionnalités Futures
-
-- Export des annotations en PDF
-- Tags personnalisés
-- Notes de lecture
-- Synchronisation cloud (optionnelle)
-- Mode présentation
-- Export bibliographie BibTeX automatique
-
----
-
-## 📜 Licence
-
-**LMA** est un projet open-source gratuit.
-Libre d'utilisation pour un usage personnel et académique.
-
----
-
-## 🙏 Crédits
-
-- Interface aux couleurs du **Maroc** 🇲🇦
-- Lecteur PDF optimisé pour **MacBook Pro**
-- Développé avec Python + Tkinter
-- Utilise PyMuPDF (MuPDF) pour le rendu PDF
-
----
 
 
 
