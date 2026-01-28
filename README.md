@@ -1,695 +1,451 @@
-# 🚀 LMA - Literature Management Assistant
+# 🇲🇦 LMA - Library Management App
 
-**Professional PDF Library Manager for Academic Research**
+> Gestionnaire de bibliothèque d'articles PDF avec lecteur intégré et annotations intelligentes
 
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Linux%20%7C%20Windows-lightgrey.svg)]()
-[![Stars](https://img.shields.io/github/stars/yassineaitmohamed/LMA?style=social)](https://github.com/yassineaitmohamed/LMA/stargazers)
 
-LMA is a powerful desktop application designed for researchers, PhD students, and academics to efficiently manage, search, and read their PDF library. Built with performance and usability in mind, it features an intelligent caching system, ultra-fast PDF reader, and comprehensive annotation capabilities.
+![LMA Interface](https://via.placeholder.com/800x500/C1272D/FFFFFF?text=LMA+Interface)
+
+## 📖 Description
+
+**LMA** (Library Management App) est une application de gestion de bibliothèque d'articles scientifiques en PDF. Organisez, recherchez et annotez vos articles académiques en toute simplicité.
+
+### ✨ Fonctionnalités Principales
+
+#### 📚 Gestion de Bibliothèque
+- ⚡ **Indexation automatique** de vos PDFs avec extraction de métadonnées
+- 🗄️ **Base de données SQLite** ultra-rapide avec cache intelligent
+- 🔍 **Recherche instantanée** par titre, auteur ou contenu
+- 🏷️ **Organisation** : marquez les articles à lire ou déjà lus
+- 🧹 **Nettoyage automatique** des fichiers manquants
+
+#### 📖 Lecteur PDF Professionnel
+- 🖱️ **Navigation fluide** optimisée pour trackpad MacBook
+- 🔎 **Zoom intelligent** avec raccourcis clavier (⌘ +/-)
+- 🖍️ **Surlignage en 4 couleurs** : Jaune, Rouge, Vert, Bleu
+- 💾 **Annotations persistantes** sauvegardées automatiquement
+- 🔍 **Recherche dans le PDF** avec navigation entre résultats
+- 🖼️ **Miniatures** pour aperçu et navigation rapide
+- 🌓 **Thème clair/sombre** adaptatif
+
+#### 🎨 Interface Moderne
+- 🇲🇦 **Design aux couleurs du Maroc** (Rouge #C1272D, Vert #006233, Or #FFD700)
+- 🎯 Interface épurée avec tableau agrandi
+- ⌨️ Raccourcis clavier intuitifs
+- 📱 Responsive et fluide
+
+---
+
+## 🚀 Installation Rapide
+
+### Prérequis
+
+- **Python 3.8+** (inclus sur macOS)
+- **macOS** 10.14+, **Linux**, ou **Windows** 10/11
+- **16 Go RAM** recommandé
+
+### Installation en 3 commandes
+
+```bash
+# 1. Cloner le dépôt
+git clone https://github.com/votre-username/LMA.git
+cd LMA
+
+# 2. Installer les dépendances
+pip3 install -r requirements.txt
+
+# 3. Lancer l'application
+cd scripts
+python3 interface_pro.py
+```
+
+### Installation manuelle des dépendances
+
+```bash
+pip3 install PyMuPDF pillow fuzzywuzzy python-levenshtein
+```
+
+**Sur macOS Monterey+ :**
+```bash
+pip3 install --break-system-packages PyMuPDF pillow fuzzywuzzy python-levenshtein
+```
+
+---
+
+## 📁 Structure du Projet
+
+```
+LMA/
+├── scripts/
+│   ├── interface_pro.py          # Interface principale 🇲🇦
+│   ├── biblio_improved.py        # Gestion BDD + cache O(1)
+│   └── lecteur_pdf_moderne.py    # Lecteur PDF optimisé
+│
+├── articles/                     # 📚 Placez vos PDFs ici
+│   ├── Article1.pdf
+│   ├── Article1.annotations.json # Annotations
+│   └── ...
+│
+├── data/                         # Créé automatiquement
+│   └── articles.db              # Base de données SQLite
+│
+├── requirements.txt              # Dépendances Python
+├── README.md                     # Ce fichier
+└── LICENSE                       # Licence MIT
+```
+
+---
+
+## 🎯 Utilisation
+
+### 1️⃣ Ajouter vos PDFs
+
+Copiez vos articles dans le dossier `articles/` :
+
+```bash
+cp /chemin/vers/vos/articles/*.pdf ~/Desktop/LMA/articles/
+```
+
+**Convention de nommage recommandée :**
+- Format : `Auteur_Année_Titre.pdf`
+- Exemple : `Dupont_2024_Machine_Learning.pdf`
+
+### 2️⃣ Indexer les PDFs
+
+1. Lancez l'application
+2. Cliquez sur **📥** (Index)
+3. Attendez la fin de l'indexation
+4. Vos articles apparaissent dans le tableau !
+
+### 3️⃣ Rechercher et Ouvrir
+
+- **Recherche** : Tapez dans la barre 🔍
+- **Ouvrir** : Double-clic sur l'article
+- **Filtrer** : 📚 ALL ou 📖 TO READ
+
+### 4️⃣ Annoter un PDF
+
+1. **Ouvrir** un PDF (double-clic)
+2. **Activer le stylo** : `⌘ P`
+3. **Choisir une couleur** : `⌘ Y` (jaune), `⌘ R` (rouge), etc.
+4. **Surligner** : Cliquer-glisser sur le texte
+5. **Sauvegarder** : Automatique !
+
+---
+
+## ⌨️ Raccourcis Clavier
+
+### Interface Principale
+
+| Raccourci | Action |
+|-----------|--------|
+| `⌘ F` | Rechercher |
+| `↑` `↓` | Naviguer dans la liste |
+| `Enter` | Ouvrir l'article sélectionné |
+| `⌘ Q` | Quitter |
+
+### Lecteur PDF
+
+#### Navigation
+| Raccourci | Action |
+|-----------|--------|
+| `←` `→` | Page précédente/suivante |
+| `Space` | Page suivante |
+| `Backspace` | Page précédente |
+| `Home` / `End` | Première/dernière page |
+
+#### Zoom
+| Raccourci | Action |
+|-----------|--------|
+| `⌘ +` / `⌘ -` | Zoomer/Dézoomer |
+| `⌘ 0` | Ajuster à la fenêtre |
+| `Double-clic` | Ajuster automatiquement |
+
+#### Annotations
+| Raccourci | Action |
+|-----------|--------|
+| `⌘ P` | Activer/désactiver le stylo |
+| `⌘ Y` | Couleur jaune 🟨 |
+| `⌘ R` | Couleur rouge 🟥 |
+| `⌘ G` | Couleur vert 🟩 |
+| `⌘ B` | Couleur bleu 🟦 |
+
+#### Autres
+| Raccourci | Action |
+|-----------|--------|
+| `⌘ F` | Rechercher dans le PDF |
+| `⌘ M` | Afficher miniatures |
+| `⌘ T` | Changer thème clair/sombre |
+| `⌘ W` | Fermer le lecteur |
+
+---
+
+## 🔧 Configuration
+
+### Créer un Raccourci Desktop (macOS)
+
+```bash
+# Créer un fichier .command
+cat > ~/Desktop/LMA.command << 'EOF'
+#!/bin/bash
+cd ~/Desktop/LMA/scripts
+python3 interface_pro.py
+EOF
+
+# Rendre exécutable
+chmod +x ~/Desktop/LMA.command
+```
+
+Double-cliquez sur `LMA.command` pour lancer !
+
+### Créer un Alias Terminal
+
+```bash
+# Ajouter à .zshrc (macOS) ou .bashrc (Linux)
+echo "alias lma='cd ~/Desktop/LMA/scripts && python3 interface_pro.py'" >> ~/.zshrc
+
+# Recharger
+source ~/.zshrc
+
+# Utiliser
+lma
+```
+
+---
+
+## 🐛 Dépannage
+
+### L'application ne démarre pas
+
+**Erreur** : `ModuleNotFoundError: No module named 'fitz'`
+
+**Solution** :
+```bash
+pip3 install PyMuPDF
+```
+
+### Les PDFs ne s'ouvrent pas
+
+**Erreur** : "lecteur_pdf_moderne.py introuvable"
+
+**Solution** :
+```bash
+# Vérifier que le fichier existe
+ls scripts/lecteur_pdf_moderne.py
+
+# Si absent, vérifier le dépôt
+git status
+```
+
+### Erreur "externally-managed-environment"
+
+**Sur macOS récent** :
+```bash
+pip3 install --break-system-packages PyMuPDF pillow fuzzywuzzy python-levenshtein
+```
+
+### Permission refusée
+
+```bash
+chmod +x scripts/*.py
+```
+
+### Base de données corrompue
+
+```bash
+# Nettoyer et réindexer
+rm data/articles.db
+# Puis relancer et cliquer sur 📥 Index
+```
+
+---
+
+## 💡 Astuces Pro
+
+### Sauvegarde Complète
+
+```bash
+# Créer une archive
+tar -czf LMA_backup_$(date +%Y%m%d).tar.gz LMA/
+
+# Restaurer
+tar -xzf LMA_backup_YYYYMMDD.tar.gz
+```
+
+### Optimiser les Performances
+
+- Limiter à **~500 PDFs** pour performance optimale
+- Le cache s'adapte automatiquement
+- Fermer les miniatures si lenteur
+
+### Organiser par Thématique
+
+Créez des sous-dossiers dans `articles/` :
+
+```
+articles/
+├── Machine_Learning/
+├── Statistiques/
+└── Neurosciences/
+```
+
+L'indexation scanne récursivement tous les sous-dossiers !
+
+---
+
+## 📊 Performance
+
+| Critère | Valeur |
+|---------|--------|
+| **Indexation** | ~100 PDFs/min |
+| **Recherche** | Instantanée (O(1) cache) |
+| **Ouverture PDF** | <10ms (avec cache) |
+| **Surlignage** | Temps réel |
+| **Cache** | 15 pages en mémoire |
+| **Préchargement** | ±2 pages adjacentes |
+
+---
+
+## 🤝 Contribuer
+
+Les contributions sont les bienvenues ! 
+
+1. **Fork** le projet
+2. Créez une **branche** : `git checkout -b feature/AmazingFeature`
+3. **Commit** : `git commit -m 'Add AmazingFeature'`
+4. **Push** : `git push origin feature/AmazingFeature`
+5. Ouvrez une **Pull Request**
+
+### Idées de Contributions
+
+- [ ] Export annotations en PDF
+- [ ] Tags personnalisés
+- [ ] Notes de lecture
+- [ ] Synchronisation cloud
+- [ ] Mode présentation
+- [ ] Export BibTeX automatique
+- [ ] Support d'autres formats (EPUB, MOBI)
+
+---
+
+## 📝 TODO
+
+- [x] Interface aux couleurs du Maroc 🇲🇦
+- [x] Lecteur PDF avec annotations
+- [x] Cache intelligent O(1)
+- [x] Recherche instantanée
+- [x] Thème clair/sombre
+- [ ] Export annotations PDF
+- [ ] Import BibTeX
+- [ ] Mode tablette
+- [ ] Application web (Flask)
+- [ ] API REST
+
+---
+
+## 🎓 Cas d'Usage
+
+### 👨‍🎓 Étudiants
+- Organiser les articles de recherche
+- Surligner les passages importants
+- Préparer les examens
+
+### 👨‍🔬 Chercheurs
+- Gérer une bibliographie complète
+- Annoter des centaines d'articles
+- Rechercher rapidement
+
+### 👨‍🏫 Professeurs
+- Organiser les lectures de cours
+- Recommander des articles
+- Préparer les références
+
+---
+
+## 🛡️ Vie Privée
+
+- ✅ **100% local** : aucune donnée envoyée en ligne
+- ✅ Base de données SQLite sur votre machine
+- ✅ Annotations sauvegardées localement
+- ✅ Pas de tracking, pas de télémétrie
+
+---
+
+## 📄 Licence
+
+Ce projet est sous licence **MIT**. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+```
+MIT License
+
+Copyright (c) 2024 LMA Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction...
+```
+
+---
+
+## 🙏 Remerciements
+
+- **PyMuPDF (fitz)** pour le rendu PDF
+- **Pillow** pour le traitement d'images
+- **FuzzyWuzzy** pour la recherche floue
+- **Tkinter** pour l'interface graphique
+- Inspiration : Preview.app (macOS), WPS Office
+
+---
+
+## 📧 Contact
+
+- **GitHub Issues** : [Signaler un bug](https://github.com/votre-username/LMA/issues)
+- **Pull Requests** : [Contribuer](https://github.com/votre-username/LMA/pulls)
+- **Discussions** : [Forum](https://github.com/votre-username/LMA/discussions)
 
 ---
 
 ## 📸 Screenshots
 
-### 🗂️ LMA Folder on Desktop
-<img src="image1.png" alt="LMA Folder on Desktop" width="800"/>
+### Interface Principale
+![Interface](https://via.placeholder.com/800x500/C1272D/FFFFFF?text=Interface+Principale)
 
-*LMA folder on your Desktop - organized workspace for research*
+*Tableau agrandi, couleurs du Maroc, recherche instantanée*
 
-### 📁 Project Structure
-<img src="image2.png" alt="Folder Structure" width="800"/>
+### Lecteur PDF
+![Lecteur](https://via.placeholder.com/800x500/006233/FFFFFF?text=Lecteur+PDF)
 
-*Three main folders: **articles** (your PDFs), **scripts** (Python files), **data** (database)*
+*Surlignage, miniatures, navigation fluide*
 
-### 📚 Main Interface - Dark Theme
-<img src="image5.png" alt="LMA Main Interface - Dark" width="800"/>
+### Annotations
+![Annotations](https://via.placeholder.com/800x500/FFD700/000000?text=Annotations)
 
-*Professional dark theme with article list, search bar, and smart filters. Shows 251 articles indexed.*
-
-### 🌟 Main Interface - Light Theme  
-<img src="image4.png" alt="LMA Main Interface - Light" width="800"/>
-
-*Clean light theme optimized for daytime reading - same powerful features*
-
-### 🌟 LecteurPDF 
-<img src="image3.png" alt="LecteurPDF" width="800"/>
-
-### 🐍 Python Scripts
-<img src="image6.png" alt="Python Scripts" width="800"/>
-
-*Core application files: interface_pro.py, biblio_improved.py, lecteurpdf_fast.py, lecteurpdf.py*
+*4 couleurs, sauvegarde automatique, recherche*
 
 ---
 
-## ✨ Key Features
+## 🌟 Star History
 
-### 📚 Smart Library Management
-- **Automatic Indexing**: Scan and index PDF files with metadata extraction
-- **Intelligent Search**: Full-text fuzzy search across titles, authors, keywords, and content
-- **Reading Status**: Track articles with "To Read" and "Already Read" tags
-- **Auto-Cleanup**: Automatically removes database entries for deleted files
-- **Multiple Formats**: Support for various PDF naming conventions
-- **Hash-Based Detection**: Prevents duplicate entries
-- **Real-Time Stats**: Shows article count and "to read" count
-
-### 🚀 Ultra-Fast PDF Reader
-- **Intelligent Caching**: LRU cache with 15 pages + preloading (±2 pages)
-- **< 10ms Page Transitions**: 5x faster than standard PDF viewers
-- **Advanced Annotations**: Multi-color highlighting, notes, bookmarks, favorites
-- **Search with Counter**: Instant full-text search with result navigation
-- **Thumbnail Navigation**: Dynamic thumbnail panel for quick page jumps
-- **Dual Reading Modes**: 
-  - 📖 Standard Mode - Regular reading
-  - ⚡ PRO Mode - Ultra-fast with advanced cache
-- **Dual Theme**: Professional dark/light modes (Oxford/UdeS colors)
-- **20+ Keyboard Shortcuts**: Power user workflow optimization
-
-### 🤖 AI Tools Integration
-- **Smart Summary**: AI-powered article summarization
-- **Key Points Extraction**: Extract main concepts and findings
-- **Content Analysis**: Analyze document structure and topics
-- **Citation Generator**: Export in multiple formats (Markdown, TXT, JSON, BibTeX)
-
-### 🎨 Modern User Interface
-- **Clean Design**: Professional, distraction-free interface
-- **Oxford/UdeS Themes**: Academic color schemes
-  - 🌙 Dark: Professional black with blue/green accents
-  - ☀️ Light: Clean beige with crisp typography
-- **Responsive Layout**: Optimized for 13"+ displays (1400x900 minimum)
-- **Performance Stats**: Real-time cache hit rate (shown: "Cache optimisé")
-- **Smart Filters**: ALL ARTICLES / TO READ tabs
-- **Action Buttons**: Refresh, Index, Theme, Stats, Clean, Performance
+[![Star History Chart](https://api.star-history.com/svg?repos=votre-username/LMA&type=Date)](https://star-history.com/#votre-username/LMA&Date)
 
 ---
 
-## 📋 System Requirements
+## 📊 Statistiques
 
-### Minimum Requirements
-- **Python**: 3.8 or higher
-- **RAM**: 4GB minimum, 8GB recommended
-- **Disk Space**: 500MB for application + space for your PDFs
-- **Display**: 1400x900 minimum resolution (optimized for MacBook Pro 13")
-
-### Supported Operating Systems
-- ✅ **macOS**: 10.14+ (Mojave and later) - Native support
-- ✅ **Linux**: Ubuntu 20.04+, Debian 10+, Fedora 32+
-- ✅ **Windows**: 10/11 (with minor adjustments)
-
-### Dependencies
-- **PyMuPDF** (fitz) - Fast PDF rendering
-- **PyPDF2** - PDF metadata extraction
-- **fuzzywuzzy** - Fuzzy string matching for search
-- **python-Levenshtein** - Fast string comparison
-- **Pillow** (PIL) - Image processing for thumbnails
-- **tkinter** - GUI framework (usually included with Python)
+![GitHub stats](https://github-readme-stats.vercel.app/api?username=votre-username&show_icons=true&theme=radical)
 
 ---
 
-## 🔧 Complete Installation Guide
+<div align="center">
 
-### Step 1: Install Python
+**🇲🇦 Fait avec ❤️ pour la communauté académique**
 
-#### macOS
-```bash
-# Check if Python is installed
-python3 --version
+[⬆ Retour en haut](#-lma---library-management-app)
 
-# If not installed, use Homebrew
-brew install python3
-
-# Or download from python.org
-# https://www.python.org/downloads/
-```
-
-#### Linux (Ubuntu/Debian)
-```bash
-# Update package list
-sudo apt update
-
-# Install Python and tkinter
-sudo apt install python3 python3-pip python3-tk
-
-# Verify installation
-python3 --version
-pip3 --version
-```
-
-#### Windows
-1. Download Python from [python.org](https://www.python.org/downloads/)
-2. Run installer and **CHECK "Add Python to PATH"**
-3. Verify in Command Prompt:
-   ```cmd
-   python --version
-   pip --version
-   ```
+</div>
 
 ---
 
-### Step 2: Clone or Download LMA
-
-#### Option A: Clone with Git (Recommended)
-
-```bash
-# Install git if needed
-# macOS: brew install git
-# Linux: sudo apt install git
-# Windows: download from git-scm.com
-
-# Clone the repository
-cd ~/Desktop
-git clone https://github.com/yassineaitmohamed/LMA.git
-cd LMA
-```
-
-#### Option B: Download ZIP
-
-1. Go to https://github.com/yassineaitmohamed/LMA
-2. Click **Code** → **Download ZIP**
-3. Extract to Desktop → `LMA` folder
-
----
-
-### Step 3: Install Python Dependencies
-
-```bash
-# Navigate to LMA directory
-cd ~/Desktop/LMA
-
-# Install all dependencies at once
-pip3 install -r requirements.txt
-```
-
-**If requirements.txt is not present, install manually:**
-```bash
-pip3 install PyMuPDF PyPDF2 fuzzywuzzy python-Levenshtein Pillow
-```
-
-**For Windows users:**
-```cmd
-cd %USERPROFILE%\Desktop\LMA
-pip install -r requirements.txt
-```
-
-**If you get permission errors:**
-```bash
-# Install for current user only
-pip3 install --user -r requirements.txt
-```
-
----
-
-### Step 4: Create Directory Structure
-
-LMA needs this folder structure on your Desktop:
-
-```
-~/Desktop/LMA/
-├── articles/          # Place your PDF files here
-├── data/              # Database (auto-created)
-├── scripts/           # Python application files (optional)
-│   ├── interface_pro.py
-│   ├── biblio_improved.py
-│   ├── lecteurpdf_fast.py
-│   └── lecteurpdf.py
-
-
-
-
-## 🚀 Quick Start Guide
-
-### First Time Setup (5 Minutes)
-
-1. **Launch LMA**
-   ```bash
-   cd ~/Desktop/LMA
-   python3 interface_pro.py
-   ```
-
-2. **Index Your PDFs**
-   - Click **🔄 Refresh** button (or **📥 Index**)
-   - Wait for scan to complete
-   - Status bar shows progress: "251 articles | 12 à lire"
-
-3. **Search for Articles**
-   Type in the search bar to find articles by:
-   - **Author name**: `Mackenzie`, `Florian`, `Voronov`
-   - **Year**: `2008`, `2009`, `2025`
-   - **Keywords**: `Lie groupoids`, `Poisson`, `quantum`
-   - **Title**: `Dirac`, `algebraic`, `manifolds`
-   
-   Fuzzy search works with typos!
-
-4. **Open a PDF**
-   - Double-click any article
-   - **Choose reading mode:**
-     - 📖 **Open (Standard)** - Regular reader
-     - ⚡ **Open PRO (Fast)** - Ultra-fast with cache
-
-5. **Mark as "To Read"**
-   - Select an article
-   - Click **📕 Mark TO READ** button
-   - Filter by clicking **📕 TO READ** tab
-
-6. **Toggle Theme**
-   - Click **🎨 Theme** button
-   - Switch between dark and light modes
-   - Theme preference is saved
-
----
-
-## 📖 Usage Guide
-
-### Library Management Features
-
-#### Toolbar Buttons (from screenshots)
-
-| Button | Name | Function |
-|--------|------|----------|
-| 🔄 | **Refresh** | Re-scan articles folder for new/deleted files |
-| 📥 | **Index** | Full re-indexing of all PDFs (extracts metadata) |
-| 🎨 | **Theme** | Toggle dark/light theme |
-| 📊 | **Stats** | Show library statistics and performance |
-| 🧹 | **Clean** | Remove database entries for deleted files |
-| ⚡ | **Perf** | Performance optimization and cache stats |
-
-#### Search & Filter
-
-**Search Bar Features:**
-- **Real-time search**: Results update as you type
-- **Fuzzy matching**: Typos and partial words work
-- **Multi-field search**: Searches title, author, keywords, content
-- **Case-insensitive**: `Poisson` = `poisson` = `POISSON`
-
-**Filter Tabs:**
-- **📚 ALL ARTICLES**: Show entire library (251 articles shown)
-- **📕 TO READ**: Show only unread articles (12 à lire shown)
-
-**Results Display:**
-- **📖 TITRE**: Article title
-- **👤 AUTEURS**: Author names
-- **📅 ANNÉE**: Publication year
-
-#### Action Buttons (Bottom)
-
-| Button | Mode | Function |
-|--------|------|----------|
-| 📖 Open (Standard) | Regular | Standard PDF reader |
-| ⚡ Open PRO (Fast) | Fast | Ultra-fast reader with cache |
-| 📕 Mark TO READ | -- | Flag as unread |
-| ✅ Mark DONE | -- | Mark as completed |
-
-**Status Bar (Bottom Left):**
-- 🗂️ Total articles count
-- 📕 "To read" count
-- ⚡ Cache status ("Cache optimisé")
-
----
-
-### PDF Reading
-
-#### Navigation
-- **Arrow Keys**: `←` `→` Previous/Next page
-- **Page Up/Down**: Jump multiple pages
-- **Home/End**: First/Last page
-- **Mouse**: Click page thumbnails
-- **Go to Page**: Type page number
-
-#### View Controls
-- **Zoom**: `Ctrl/Cmd +` `-` `0`
-- **Fullscreen**: `F11`
-- **Thumbnails**: `Ctrl/Cmd M`
-- **Fit to Window**: Auto-sizing
-
-#### Annotations
-- **Highlight**: Select text → Choose color
-- **Notes**: `Ctrl/Cmd N` → Add note
-- **Bookmarks**: `Ctrl/Cmd B` → Mark page
-- **Export**: `Ctrl/Cmd E` → Save annotations
-
-#### Search in PDF
-- **Find**: `Ctrl/Cmd F`
-- **Next Result**: `F3` or `Enter`
-- **Previous**: `Shift F3`
-- **Close Search**: `Esc`
-
-#### AI Tools
-- **Summarize**: Generate article summary
-- **Extract Key Points**: Get main findings
-- **Analyze**: Content structure analysis
-- **Export Citations**: BibTeX, JSON, Markdown
-
----
-
-## ⌨️ Complete Keyboard Shortcuts
-
-### Main Window
-| Shortcut | Action |
-|----------|--------|
-| `Ctrl/Cmd F` | Focus search box |
-| `Ctrl/Cmd R` | Refresh library |
-| `Ctrl/Cmd I` | Re-index all articles |
-| `Ctrl/Cmd T` | Toggle dark/light theme |
-| `Ctrl/Cmd S` | Show statistics |
-| `Ctrl/Cmd K` | Clean database |
-| `Enter` | Open selected article |
-| `Delete` | Remove selected entry |
-| `Ctrl/Cmd Q` | Quit application |
-
-### PDF Reader - Navigation
-| Shortcut | Action |
-|----------|--------|
-| `→` or `Space` | Next page |
-| `←` or `Shift Space` | Previous page |
-| `Page Down` | Jump 5 pages forward |
-| `Page Up` | Jump 5 pages back |
-| `Home` | First page |
-| `End` | Last page |
-| `Ctrl/Cmd G` | Go to page number |
-
-### PDF Reader - View
-| Shortcut | Action |
-|----------|--------|
-| `Ctrl/Cmd +` | Zoom in |
-| `Ctrl/Cmd -` | Zoom out |
-| `Ctrl/Cmd 0` | Reset zoom (100%) |
-| `F11` | Toggle fullscreen |
-| `Ctrl/Cmd M` | Show/hide thumbnails |
-| `Ctrl/Cmd L` | Fit to width |
-
-### PDF Reader - Features
-| Shortcut | Action |
-|----------|--------|
-| `Ctrl/Cmd F` | Search in document |
-| `F3` | Next search result |
-| `Shift F3` | Previous search result |
-| `Ctrl/Cmd N` | Add note |
-| `Ctrl/Cmd B` | Toggle bookmark |
-| `Ctrl/Cmd H` | Toggle highlights |
-| `Ctrl/Cmd S` | Save annotations |
-| `Ctrl/Cmd E` | Export annotations |
-| `Ctrl/Cmd T` | Toggle theme |
-| `Ctrl/Cmd W` | Close PDF |
-| `Esc` | Exit fullscreen/Close |
-
----
-
-## 🎨 Themes & Customization
-
-### Available Themes
-
-#### 🌙 Dark Theme (Screenshot: image5.png)
-- **Background**: Professional dark (#1a1d1a)
-- **Accent**: Oxford Blue (#002147) + UdeS Green (#00a650)
-- **Text**: Light gray (#e8ede8)
-- **Perfect for**: Night reading, reducing eye strain
-
-#### ☀️ Light Theme (Screenshot: image6.png)
-- **Background**: Clean Beige (#f5f5dc)
-- **Accent**: Bright Blue (#3498db)
-- **Text**: Dark charcoal (#2c3e50)
-- **Perfect for**: Daytime work, printing
-
-**Toggle Theme:**
-- Click **🎨 Theme** button in toolbar
-- Or press `Ctrl/Cmd T`
-- Theme preference is saved automatically
-
-### Custom Configuration
-
-Create `config.json` in the LMA folder:
-
-```json
-{
-  "library_path": "~/Desktop/LMA/articles",
-  "database_path": "~/Desktop/LMA/data/articles.db",
-  "theme": "dark",
-  "cache_size": 15,
-  "preload_pages": 2,
-  "default_zoom": 1.0,
-  "auto_cleanup": true,
-  "show_stats": true
-}
-```
-
----
-
-## 🐛 Troubleshooting
-
-### Application Won't Start
-
-**Problem**: `ModuleNotFoundError` or import errors
-
-**Solution**:
-```bash
-# Verify Python version (need 3.8+)
-python3 --version
-
-# Reinstall dependencies
-pip3 install --upgrade -r requirements.txt
-
-# Try installing packages individually
-pip3 install PyMuPDF
-pip3 install PyPDF2
-pip3 install fuzzywuzzy python-Levenshtein
-pip3 install Pillow
-```
-
-### PDFs Not Showing
-
-**Problem**: Library appears empty after clicking Refresh
-
-**Solutions**:
-1. Verify PDFs are in `~/Desktop/LMA/articles/`
-2. Check file permissions: `ls -la ~/Desktop/LMA/articles/`
-3. Look for errors in the console output
-4. Try **🧹 Clean Database** then **🔄 Refresh**
-5. Check that PDFs are valid (not corrupted)
-
-### Slow Performance
-
-**Problem**: PDF loading or search is slow
-
-**Solutions**:
-- Close other resource-intensive applications
-- Check available RAM (need 4GB+)
-- Reduce cache size if low on memory
-- Update to latest version: `git pull origin main`
-- Check disk space: `df -h`
-- Click **⚡ Perf** to optimize cache
-
-### Database Errors
-
-**Problem**: SQLite errors or corrupted database
-
-**Solution**:
-```bash
-# Backup first
-cp ~/Desktop/LMA/data/articles.db ~/Desktop/articles_backup.db
-
-# Delete and rebuild
-rm ~/Desktop/LMA/data/articles.db
-
-# Restart LMA - database will be recreated
-# Then click 🔄 Refresh to re-index all PDFs
-```
-
-### macOS Permission Issues
-
-**Problem**: "Operation not permitted" or access denied
-
-**Solution**:
-1. **System Preferences** → **Security & Privacy**
-2. Click **Privacy** tab
-3. Select **Full Disk Access**
-4. Click **+** and add:
-   - Terminal.app
-   - Python app
-5. Restart Terminal and try again
-
-### Linux tkinter Not Found
-
-**Problem**: `ModuleNotFoundError: No module named 'tkinter'`
-
-**Solution**:
-```bash
-# Ubuntu/Debian
-sudo apt install python3-tk
-
-# Fedora
-sudo dnf install python3-tkinter
-
-# Arch Linux
-sudo pacman -S tk
-
-# Verify
-python3 -c "import tkinter; print('OK')"
-```
-
-### Windows Path Issues
-
-**Problem**: Can't find files or "FileNotFoundError"
-
-**Solution**:
-```cmd
-# Use absolute paths
-cd C:\Users\YourUsername\Desktop\LMA
-python interface_pro.py
-
-# Or set PYTHONPATH
-set PYTHONPATH=C:\Users\YourUsername\Desktop\LMA
-```
-
----
-
-## 📊 Performance & Statistics
-
-### Cache Performance (as shown in screenshots)
-
-The status bar shows:
-- **"251 articles"**: Total indexed articles
-- **"12 à lire"**: Articles marked "to read"
-- **"Cache optimisé"**: Cache is performing optimally
-
-### Expected Performance
-
-| Metric | Target | Typical |
-|--------|--------|---------|
-| Page Load (cached) | < 10ms | 5-8ms |
-| Page Load (uncached) | < 100ms | 50-80ms |
-| Search Speed | < 50ms | 20-30ms |
-| Index Speed | ~100 PDF/s | 50-150 PDF/s |
-| Cache Hit Rate | 85%+ | 90-95% |
-
-### Optimization Tips
-
-1. **SSD vs HDD**: Store LMA on SSD for 5-10x faster performance
-2. **Memory**: 8GB+ RAM recommended for large libraries (500+ PDFs)
-3. **PDF Size**: Keep individual PDFs under 50MB for best speed
-4. **Indexing**: Index once, search many times (very fast!)
-5. **Cache Size**: Increase for more RAM (15-30 pages optimal)
-6. **Close PDFs**: Close unused PDF readers to free memory
-
----
-
-## 🎯 PDF Naming Best Practices
-
-For optimal metadata extraction, name your PDFs consistently:
-
-### Recommended Formats
-
-1. **Author_Year_Title.pdf** (Best for sorting by author)
-   ```
-   Mackenzie_2009_General_Theory_of_Lie_Groupoids.pdf
-   Florian_2009_Coisotropic_submanifolds_BFV_Complex.pdf
-   Voronov_2008_Higher_Poisson_Brackets_Differntial_Forms.pdf
-   ```
-
-2. **Year_Author_Title.pdf** (Best for chronological)
-   ```
-   2009_Mackenzie_General_Theory_of_Lie_Groupoids.pdf
-   2009_Florian_Coisotropic_submanifolds_BFV_Complex.pdf
-   2008_Voronov_Higher_Poisson_Brackets.pdf
-   ```
-
-3. **Title_Year_Author.pdf** (Best for topic browsing)
-   ```
-   General_Theory_of_Lie_Groupoids_2009_Mackenzie.pdf
-   Poisson_Manifolds_Lie_algebroids_2008_Yvette.pdf
-   ```
-
-### Naming Tips
-- ✅ Use underscores `_` not spaces (better compatibility)
-- ✅ Include year for chronological sorting
-- ✅ Keep author last name only (avoid initials if possible)
-- ✅ Use descriptive titles (not "paper1.pdf")
-- ❌ Avoid special characters: `/ \ : * ? " < > |`
-- ❌ Don't use very long names (keep under 100 characters)
-
-**Examples from your library:**
-- ✅ `Mackenzie_2009_Lie_Groupoids.pdf`
-- ✅ `2025_Yassine_Derived_deformation_functors_Koszul.pdf`
-- ❌ `doc (1).pdf`
-- ❌ `paper-final-FINAL-v3-NEW.pdf`
-
----
-
-## 🔧 Advanced Features
-
-### Multiple Libraries
-
-Run multiple LMA instances for different projects:
-
-```bash
-# Research Library
-cd ~/Desktop/LMA-Research
-python3 interface_pro.py
-
-# Teaching Materials
-cd ~/Desktop/LMA-Teaching
-python3 interface_pro.py
-
-# Conference Papers
-cd ~/Desktop/LMA-Conferences
-python3 interface_pro.py
-```
-
-Each instance maintains its own database and settings.
-
-### Custom Paths
-
-Edit `biblio_improved.py` (around line 30):
-
-```python
-# Default location
-base_dir = Path.home() / "Desktop" / "LMA"
-
-# Change to custom location
-base_dir = Path("/Users/yassine/Research/Library")
-# or
-base_dir = Path.home() / "Documents" / "Research" / "PDFs"
-```
-
-### Batch Operations
-
-```bash
-# Clean all deleted file entries
-cd ~/Desktop/LMA
-python3 biblio_improved.py --nettoyer
-
-# Rebuild entire index
-python3 biblio_improved.py --rebuild
-
-# Export database to JSON
-python3 biblio_improved.py --export library.json
-
-# Statistics
-python3 biblio_improved.py --stats
-```
-
----
-
-
-
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-**TL;DR**: Free to use, modify, and distribute, even commercially. Just include the original license.
-
----
-
-## 👨‍💻 Author
-
-**Yassine Ait Mohamed**
-
-
-
-
-
-**Made with ❤️ for researchers and academics**
-
-*Empowering research through better literature management*
-
+*Dernière mise à jour : Janvier 2024*
