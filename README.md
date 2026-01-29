@@ -47,31 +47,23 @@
 
 ## 🚀 Installation Complète via Terminal
 
-### Étape 1 : Créer la Structure
+### Étape 1 : Télécharger LMA
+
+1. Téléchargez le fichier **LMA.zip** depuis GitHub
+2. Le fichier se trouve dans vos **Téléchargements** (Downloads)
+
+### Étape 2 : Extraire et Installer
 
 Ouvrez le **Terminal** et copiez-collez ces commandes :
 
 ```bash
-# Créer le dossier LMA sur le Bureau
-mkdir -p ~/Desktop/LMA/scripts
-mkdir -p ~/Desktop/LMA/articles
-mkdir -p ~/Desktop/LMA/data
+# Aller dans le dossier Téléchargements
+cd ~/Downloads
 
-# Aller dans le dossier
-cd ~/Desktop/LMA
-```
+# Extraire le fichier ZIP sur le Bureau
+unzip LMA.zip -d ~/Desktop/
 
-### Étape 2 : Télécharger les Fichiers
-
-Téléchargez les 3 fichiers Python et placez-les dans `~/Desktop/LMA/scripts/` :
-- `interface_pro.py`
-- `biblio_improved.py`
-- `lecteur_pdf_moderne.py`
-
-**Via terminal (si vous avez git) :**
-```bash
-# Cloner le dépôt (remplacez par votre URL)
-git clone https://github.com/votre-username/LMA.git ~/Desktop/LMA
+# Aller dans le dossier LMA
 cd ~/Desktop/LMA
 ```
 
@@ -486,21 +478,17 @@ mkdir -p ~/Desktop/LMA/data
 
 ## 📝 Commandes Récapitulatives
 
-### Installation
+### Installation Rapide (3 commandes)
 
 ```bash
-# 1. Créer structure
-mkdir -p ~/Desktop/LMA/{scripts,articles,data}
+# 1. Extraire le ZIP téléchargé
+cd ~/Downloads && unzip LMA.zip -d ~/Desktop/
 
 # 2. Installer dépendances
 pip3 install --break-system-packages PyMuPDF pillow fuzzywuzzy python-levenshtein
 
-# 3. Créer alias
-echo "alias lma='cd ~/Desktop/LMA/scripts && python3 interface_pro.py'" >> ~/.zshrc
-source ~/.zshrc
-
-# 4. Lancer
-lma
+# 3. Créer alias et lancer
+echo "alias lma='cd ~/Desktop/LMA/scripts && python3 interface_pro.py'" >> ~/.zshrc && source ~/.zshrc && lma
 ```
 
 ### Utilisation Quotidienne
@@ -557,4 +545,4 @@ Maintenant vous avez :
 
 **🇲🇦 Profitez de LMA ! Tapez simplement `lma` dans le terminal pour commencer ! 📚**
 
-*Dernière mise à jour : Janvier 2024*
+*Dernière mise à jour : Janvier 2026*
